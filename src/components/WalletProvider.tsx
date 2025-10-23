@@ -54,15 +54,19 @@ export function WalletProviderWrapper({ children }: WalletProviderProps) {
       config={{
         solanaClusters: [
           {
-            name: 'mainnet-beta',
-            rpcUrl: process.env.NEXT_PUBLIC_SOLANA_RPC_MAINNET || 'https://api.mainnet-beta.solana.com',
+            name: "mainnet-beta",
+            rpcUrl:
+              process.env.NEXT_PUBLIC_SOLANA_RPC_MAINNET ||
+              "https://api.mainnet-beta.solana.com",
           },
           {
-            name: 'devnet',
-            rpcUrl: process.env.NEXT_PUBLIC_SOLANA_RPC_DEVNET || 'https://api.devnet.solana.com',
+            name: "devnet",
+            rpcUrl:
+              process.env.NEXT_PUBLIC_SOLANA_RPC_DEVNET ||
+              "https://api.devnet.solana.com",
           },
         ],
-        defaultChain: solanaDevnet,
+        defaultChain: process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet' ? solanaDevnet : solanaMainnet,
         supportedChains: [solanaDevnet, solanaMainnet],
         // Enable Solana
         embeddedWallets: {
