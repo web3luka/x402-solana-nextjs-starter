@@ -25,7 +25,9 @@ export default function ProtectedPage() {
       // Create x402 client with Privy wallet
       const client = createX402Client({
         wallet: wallet,
-        network: process.env.NODE_ENV === 'production' ? 'solana' : 'solana-devnet',
+        network: process.env.NEXT_PUBLIC_NETWORK === "solana-devnet"
+          ? "solana-devnet"
+          : "solana",
         maxPaymentAmount: BigInt(10_000_000), // Max payment amount
       });
 
