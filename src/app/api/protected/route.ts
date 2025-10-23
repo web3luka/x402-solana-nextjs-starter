@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     network: process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet' ? 'solana-devnet' : 'solana',
     config: {
       description: 'Protected API Access',
-      resource: `http://localhost:3000/api/protected`, // Full URL required
+      resource: `${req.nextUrl.origin}/api/protected` as `${string}://${string}${string}`, // Dynamic URL based on current domain
     }
   });
 
