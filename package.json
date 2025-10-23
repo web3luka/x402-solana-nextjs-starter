@@ -1,0 +1,38 @@
+{
+  "name": "x402-solana-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@payai/x402-solana": "^0.1.0",
+    "@privy-io/react-auth": "2.23",
+    "@solana-program/memo": "^0.4.0",
+    "@solana-program/system": "^0.6.0",
+    "@solana-program/token": "^0.4.0",
+    "@solana/codecs": "^4.0.0",
+    "@solana/codecs-data-structures": "^4.0.0",
+    "@solana/kit": "^4.0.0",
+    "@solana/web3.js": "^1.95.3",
+    "install": "^0.13.0",
+    "next": "14.0.0",
+    "npm": "^11.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.0.0"
+  }
+}
