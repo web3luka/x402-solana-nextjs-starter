@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { X402PaymentHandler } from '@payai/x402-solana/server';
 
 const x402 = new X402PaymentHandler({
-  network: process.env.NODE_ENV === 'production' ? 'solana' : 'solana-devnet',
+  network: process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet' ? 'solana-devnet' : 'solana',
   treasuryAddress: process.env.TREASURY_WALLET_ADDRESS || 'YourTreasuryAddressHere',
   facilitatorUrl: 'https://facilitator.payai.network',
 });
@@ -16,13 +16,13 @@ export async function POST(req: NextRequest) {
     price: {
       amount: "10000",  // $0.01 USDC (10,000 micro-units = $0.01)
       asset: {
-        address: process.env.NODE_ENV === 'production'
-          ? 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'  // USDC mainnet
-          : 'Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr', // USDC devnet (faucet)
+        address: process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet'
+          ? 'Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr'  // USDC devnet (faucet)
+          : 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', // USDC mainnet
         decimals: 6  // USDC has 6 decimals
       }
     },
-    network: process.env.NODE_ENV === 'production' ? 'solana' : 'solana-devnet',
+    network: process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet' ? 'solana-devnet' : 'solana',
     config: {
       description: 'Protected API Access',
       resource: `http://localhost:3000/api/protected`, // Full URL required
