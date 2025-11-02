@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function middleware(_request: NextRequest) {
   // x402 payments are now handled directly in API routes
   // No middleware needed - each protected route handles its own payments
   return NextResponse.next();

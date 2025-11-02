@@ -18,7 +18,7 @@ export default function Home() {
     type: 'info'
   });
 
-  const handlePaymentSuccess = (response: any) => {
+  const handlePaymentSuccess = (response: unknown) => {
     setModal({
       isOpen: true,
       title: 'Payment Successful! 🎉',

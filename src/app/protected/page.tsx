@@ -6,7 +6,7 @@ import { createX402Client } from '@payai/x402-solana/client';
 
 export default function ProtectedPage() {
   const { wallets } = useSolanaWallets();
-  const [response, setResponse] = useState<any>(null);
+  const [response, setResponse] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

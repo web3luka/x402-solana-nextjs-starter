@@ -5,7 +5,7 @@ import { useSolanaWallets } from '@privy-io/react-auth/solana';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const { ready, authenticated, user, login, logout } = usePrivy();
+  const { ready, authenticated, login, logout } = usePrivy();
   const { wallets } = useSolanaWallets();
 
   if (!ready) {
