@@ -7,7 +7,7 @@ import { createX402Client } from '@payai/x402-solana/client';
 interface PaymentButtonProps {
   amount?: number;
   currency?: string;
-  onSuccess?: (response: any) => void;
+  onSuccess?: (response: unknown) => void;
   onError?: (error: string) => void;
   children: React.ReactNode;
 }
@@ -32,11 +32,13 @@ export default function PaymentButton({
     setLoading(true);
 
     try {
-      // Create x402 client with Privy wallet
+      console.log('Processing payment...');
+      
+      // Create x402 client with default RPC from environment
       const client = createX402Client({
         wallet: wallet,
         network: process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet' ? 'solana-devnet' : 'solana',
-        maxPaymentAmount: BigInt(10_000_000), // Max payment amount
+        maxPaymentAmount: BigInt(10_000_000),
       });
 
       // Make a paid request - x402 should handle ATA creation automatically
@@ -58,13 +60,15 @@ export default function PaymentButton({
       if (response.ok) {
         onSuccess?.(result);
       } else {
-        onError?.(result.error || 'Payment failed');
+        throw new Error(result.error || 'Payment failed');
       }
     } catch (error) {
-      onError?.(error instanceof Error ? error.message : 'Unknown error');
-    } finally {
-      setLoading(false);
+      console.error('Payment failed:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Payment failed';
+      onError?.(errorMessage);
     }
+    
+    setLoading(false);
   };
 
   return (

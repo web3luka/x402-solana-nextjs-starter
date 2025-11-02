@@ -1,7 +1,6 @@
 'use client';
 
 import { PrivyProvider } from '@privy-io/react-auth';
-import { useRouter } from 'next/navigation';
 import { ReactNode } from 'react';
 
 import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana';
@@ -11,7 +10,7 @@ interface WalletProviderProps {
 }
 
 const solanaDevnet = {
-  id: 103, // Solana devnet chain ID
+  id: 103, // Use official Solana devnet chain ID
   name: 'Solana Devnet',
   network: 'solana-devnet',
   nativeCurrency: {
@@ -28,7 +27,7 @@ const solanaDevnet = {
 };
 
 const solanaMainnet = {
-  id: 101, // Solana mainnet chain ID
+  id: 101, // Use official Solana mainnet chain ID
   name: 'Solana Mainnet',
   network: 'solana-mainnet',
   nativeCurrency: {
@@ -38,7 +37,7 @@ const solanaMainnet = {
   },
   rpcUrls: {
     default: {
-      http: [process.env.NEXT_PUBLIC_SOLANA_RPC_MAINNET || 'https://api.mainnet-beta.solana.com'],
+      http: [process.env.NEXT_PUBLIC_SOLANA_RPC_MAINNET || 'https://mainnet.helius-rpc.com/?api-key=YOUR_HELIUS_API_KEY'],
     },
   },
   testnet: false,
@@ -46,8 +45,6 @@ const solanaMainnet = {
 
 
 export function WalletProviderWrapper({ children }: WalletProviderProps) {
-  const router = useRouter();
-
   return (
     <PrivyProvider
       appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID ?? ""}
@@ -57,7 +54,7 @@ export function WalletProviderWrapper({ children }: WalletProviderProps) {
             name: "mainnet-beta",
             rpcUrl:
               process.env.NEXT_PUBLIC_SOLANA_RPC_MAINNET ||
-              "https://api.mainnet-beta.solana.com",
+              "https://mainnet.helius-rpc.com/?api-key=YOUR_HELIUS_API_KEY",
           },
           {
             name: "devnet",

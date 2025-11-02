@@ -71,6 +71,25 @@ export default function Home() {
             Try an x402 micropayment ($0.01) directly from this page.
             Connect your Solana wallet using the button in the navbar.
           </p>
+          
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+            <p className="text-sm text-yellow-800">
+              <strong>⚠️ Network Notice:</strong> 
+              {process.env.NEXT_PUBLIC_NETWORK === 'solana-mainnet' ? (
+                <> Mainnet mode active - use <strong>Mainnet-Beta</strong> (Chain ID: 101)</>
+              ) : (
+                <> Devnet mode active - use <strong>Devnet</strong> (Chain ID: 103)</>
+              )}. 
+              Make sure your wallet matches the current network.
+            </p>
+            <p className="text-sm text-yellow-700 mt-2">
+              <strong>💰 Requirements:</strong> You need {process.env.NEXT_PUBLIC_NETWORK === 'solana-mainnet' ? 'real' : 'devnet'} USDC tokens and some SOL for transaction fees. 
+              {process.env.NEXT_PUBLIC_NETWORK === 'solana-devnet' && (
+                <> Get devnet USDC from the <a href="https://faucet.solana.com/" target="_blank" rel="noopener noreferrer" className="underline">Solana faucet</a>.</>
+              )}
+            </p>
+          </div>
+          
           <PaymentButton
             amount={0.01}
             onSuccess={handlePaymentSuccess}
@@ -93,17 +112,17 @@ export default function Home() {
               <div className="bg-white rounded-lg p-4 shadow-sm">
                 <div className="text-2xl mb-2">⚡</div>
                 <h3 className="font-semibold text-gray-800">Instant Settlements</h3>
-                <p className="text-sm text-gray-600">Payments settle in ~2 seconds on Solana</p>
+                <p className="text-sm text-gray-500">Payments settle in ~2 seconds on Solana</p>
               </div>
               <div className="bg-white rounded-lg p-4 shadow-sm">
                 <div className="text-2xl mb-2">💰</div>
                 <h3 className="font-semibold text-gray-800">USDC Micropayments</h3>
-                <p className="text-sm text-gray-600">$0.01+ payments without gas fees</p>
+                <p className="text-sm text-gray-500">$0.01+ payments without gas fees</p>
               </div>
               <div className="bg-white rounded-lg p-4 shadow-sm">
                 <div className="text-2xl mb-2">🔒</div>
                 <h3 className="font-semibold text-gray-800">No Registration</h3>
-                <p className="text-sm text-gray-600">HTTP 402 protocol - just pay to access</p>
+                <p className="text-sm text-gray-500">HTTP 402 protocol - just pay to access</p>
               </div>
             </div>
           </div>

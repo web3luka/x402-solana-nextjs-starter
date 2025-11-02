@@ -34,7 +34,7 @@ A comprehensive starter pack for building Next.js applications with x402 protoco
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 20+ (recommended for optimal performance)
 - npm or yarn
 
 ## Installation
@@ -66,6 +66,16 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
 ```bash
 npm run dev
+```
+
+## Development Scripts
+
+```bash
+npm run lint          # Check for linting issues
+npm run lint:fix      # Fix linting issues automatically
+npm run type-check    # Run TypeScript type checking
+npm run clean         # Clean .next build directory
+npm run build         # Build for production
 ```
 
 ## Project Structure
