@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       network: NETWORK === 'solana-devnet' ? 'solana-devnet' : 'solana',
       config: {
         description: 'Protected API Access',
-        resource: `${BASE_URL}/api/protected`,
+        resource: `${BASE_URL}/api/protected` as `${string}://${string}`,
       }
     });
 
