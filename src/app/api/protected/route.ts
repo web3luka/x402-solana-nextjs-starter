@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     let body: ProtectedRequest;
     try {
       body = await req.json();
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { error: 'Invalid JSON in request body' },
         { status: 400 }
